@@ -1,26 +1,41 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, {useState} from 'react'
 import './App.css';
+import Header from './header/Header'
+import Layout from './layout/Layout'
+import Basket from './basket/Basket'
+import SelectedProduct from './SelectedProduct/SelectedProduct'
+import {UserContext} from "./userContext/userContext"
+
+import {
+    BrowserRouter as Router,
+    Route, Switch
+} from 'react-router-dom'
+//
+// type ProductT = {
+//     id: string,
+//     name: string,
+//     quantity: number
+// }
 
 const App: React.FC = () => {
-  return (
+    const [myProducts, setProducts] = useState([])
+    const context:any = {
+        myProducts,
+        setProducts
+    }
+    return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+        <UserContext.Provider value={context}>
+        <Router>
+            <Header/>
+            <Switch>
+                 <Route exact path={"/"} component={Layout}/>
+                 <Route path={"/product:id"} component={SelectedProduct}/>
+                 <Route path={"/basket"} component={Basket}/>
+            </Switch>
+        </Router>
+        </UserContext.Provider>
     </div>
   );
 }
-
 export default App;

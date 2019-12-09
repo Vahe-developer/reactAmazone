@@ -20,3 +20,33 @@
 .App-link {
   color: #09d3ac;
 }
+.MuiPaper-rounded{
+  margin:0 auto;
+}
+
+
+.MuiContainer-maxWidthSm {
+  margin-top: 34px;
+  max-width: 1000px!important;
+}
+.SearchBar{
+  position: absolute;
+  background: #0909098f;
+  top: 64px;
+  right: 0px;
+  width: 290px
+}
+
+.zoom {
+  padding: 5px;
+  background-color: rgb(44, 44, 44);
+  transition: transform .2s; /* Animation */
+  width: 100px;
+  height: 100px;
+  margin: 0 auto;
+}
+
+.zoom:hover {
+  transform: scale(1.05); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+}
+
